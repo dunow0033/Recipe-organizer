@@ -17,7 +17,8 @@ class IngredientsController < ApplicationController
     end
 
     def destroy
-        
+        ingredient = Ingredient.find(params[:id])
+        ingredient.destroy
     end
 
     private
