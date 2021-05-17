@@ -7,3 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 recipe = Recipe.create(name: 'Pizza')
+recipe = Recipe.create(name: 'Turkey Burger')
+recipe = Recipe.create(name: 'Lasagna')
+recipe = Recipe.create(name: 'Burrito')
+recipe = Recipe.create(name: 'Pasta')
