@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
         recipe = Recipe.new(recipe_params)
         if recipe.save
             render json: recipe
-            #this is a comment
         else
             render json: {error: "Error creating recipe"}
         end
