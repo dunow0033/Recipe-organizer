@@ -42,7 +42,7 @@ class IngredientsInput extends React.Component {
         return (
             <div>
             {/*<h1>{this.props.recipes[this.props.match.params.id]["name"]}</h1>*/}
-                <form onSubmit={this.handleSubmit}>
+               <form onSubmit={this.handleSubmit}>
                     <input 
                         type="text" 
                         name="name" 
@@ -64,4 +64,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {addIngredient})(IngredientsInput)
+export default connect(mapStateToProps, { addIngredient } )(IngredientsInput)

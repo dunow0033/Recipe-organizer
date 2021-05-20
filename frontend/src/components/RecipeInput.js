@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom'
 import { addRecipe } from '../actions/addRecipe';
 
 //I want this page to have a text box to add the recipe name at the top,
@@ -25,13 +24,14 @@ class RecipeInput extends React.Component {
         let recipeID = this.props.recipes[recipeIndex]["id"];
         let recipeName = this.props.recipes[recipeIndex]["name"];
         //this.props.recipes[this.props.match.params.id]["id"]
+        console.log(this.props.recipes);
         console.log(recipeID);
         console.log(recipeName);
         this.setState({
             name: ''
         });
 
-        //this.props.history.push(`/recipes/${recipeID}`);
+        this.props.history.push(`/recipes/${recipeID}`);
 
         {/*<Redirect to={`/recipes/${recipeIndex}`} />*/}
     }
