@@ -14,3 +14,7 @@ export const addRecipe = (data) => {
         }))
     }
 }
+
+// export const addRecipe = (data) => {
+//     return {type: 'ADD_RECIPE', payload: data}
+// }

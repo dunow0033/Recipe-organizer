@@ -32,9 +32,25 @@ class RecipeInput extends React.Component {
         });
 
         this.props.history.push(`/recipes/${recipeID}`);
-
         {/*<Redirect to={`/recipes/${recipeIndex}`} />*/}
     }
+
+    // handleSubmit = (data) => {
+    //     //event.preventDefault();
+    //     fetch('http://localhost:3001/recipes', {
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Accept': 'application/json'
+    //         },
+    //         method: 'POST',
+    //         body: JSON.stringify(data)
+    //     })
+    //     .then(res => res.json())
+    //     .then(recipe => {
+    //         console.log(recipe)
+    //         this.props.addRecipe(recipe)
+    //     })
+    // }
 
     render(){
         return (

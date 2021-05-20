@@ -12,6 +12,7 @@ import { addIngredient } from '../actions/addIngredient';
 class IngredientsInput extends React.Component {
     constructor(props){
         super(props);
+        console.log("hello");
         this.state = {
             name: ''
         }
