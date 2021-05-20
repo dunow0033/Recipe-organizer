@@ -10,9 +10,11 @@ import { addIngredient } from '../actions/addIngredient';
 // ingredients.
 
 class IngredientsInput extends React.Component {
-    
-    state = {
-        name: ''
+    constructor(props){
+        super(props);
+        this.state = {
+            name: ''
+        }
     }
 
     handleChange = (event) => {
@@ -39,7 +41,7 @@ class IngredientsInput extends React.Component {
     render() {
         return (
             <div>
-                {/*<h1>{`this.props.${recipeId}.name`}</h1>*/}
+            {/*<h1>{this.props.recipes[this.props.match.params.id]["name"]}</h1>*/}
                 <form onSubmit={this.handleSubmit}>
                     <input 
                         type="text" 

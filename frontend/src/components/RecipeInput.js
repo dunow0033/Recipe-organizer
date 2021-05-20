@@ -21,12 +21,17 @@ class RecipeInput extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.addRecipe(this.state);
-        const recipeIndex = this.props.recipes.length - 1;
+        let recipeIndex = this.props.recipes.length - 1;
+        let recipeID = this.props.recipes[recipeIndex]["id"];
+        let recipeName = this.props.recipes[recipeIndex]["name"];
+        //this.props.recipes[this.props.match.params.id]["id"]
+        console.log(recipeID);
+        console.log(recipeName);
         this.setState({
             name: ''
         });
 
-        this.props.history.push(`/recipes/${recipeIndex}`);
+        //this.props.history.push(`/recipes/${recipeID}`);
 
         {/*<Redirect to={`/recipes/${recipeIndex}`} />*/}
     }
