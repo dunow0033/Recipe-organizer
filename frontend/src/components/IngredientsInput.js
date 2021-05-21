@@ -31,16 +31,17 @@ class IngredientsInput extends React.Component {
     }
 
     addIngredient = (event) => {
-        console.log(this.props.id)
+        let recipeId = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+
         event.preventDefault();
-        this.props.addIngredient(this.state, this.props.id);
+        this.props.addIngredient(this.state, recipeId);
         this.setState({
             name: ''
         })
     }
 
     render() {
-        const recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+        let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
 
         return (
             <div>
