@@ -6,7 +6,7 @@ class IngredientsContainer extends React.Component {
     render(){
         return (
             <div>
-                <IngredientsInput recipe={this.props.recipes} />
+                <IngredientsInput />
             </div>
         )
     }

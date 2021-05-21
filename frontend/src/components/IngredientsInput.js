@@ -31,6 +31,7 @@ class IngredientsInput extends React.Component {
     }
 
     addIngredient = (event) => {
+        console.log(this.props.id)
         event.preventDefault();
         this.props.addIngredient(this.state, this.props.id);
         this.setState({
@@ -71,6 +72,6 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => 
+//const mapDispatchToProps = dispatch => 
 
 export default connect(mapStateToProps, { addIngredient } )(IngredientsInput)

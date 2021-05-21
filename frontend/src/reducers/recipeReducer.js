@@ -4,10 +4,10 @@ export default function recipeReducer(state = {recipes: []}, action) {
             return {recipes: action.payload};
         case 'ADD_RECIPE':
             return {...state, recipes: [...state.recipes, action.payload]}
-        case 'ADD_INGREDIENT':
-            return {...state, recipes: state.recipes.map(recipe => {
+        // case 'ADD_INGREDIENT':
+        //     return {...state, recipes: state.recipes.map(recipe => {
                 
-            })}
+        //     })}
         default:
             return state
     }
