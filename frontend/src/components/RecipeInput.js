@@ -19,7 +19,7 @@ class RecipeInput extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.addRecipe(this.state);
+        this.props.addRecipe(this.state)
         let recipeIndex = this.props.recipes.length - 1;
         let recipeID = this.props.recipes[recipeIndex]["id"];
         let recipeName = this.props.recipes[recipeIndex]["name"];
@@ -33,24 +33,11 @@ class RecipeInput extends React.Component {
 
         this.props.history.push(`/recipes/${recipeID}`);
         {/*<Redirect to={`/recipes/${recipeIndex}`} />*/}
-    }
 
-    // handleSubmit = (data) => {
-    //     //event.preventDefault();
-    //     fetch('http://localhost:3001/recipes', {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'application/json'
-    //         },
-    //         method: 'POST',
-    //         body: JSON.stringify(data)
-    //     })
-    //     .then(res => res.json())
-    //     .then(recipe => {
-    //         console.log(recipe)
-    //         this.props.addRecipe(recipe)
-    //     })
-    // }
+        // this.props.dispatchCreateEvent(formData).then(() => {
+        //     this.props.history.push(`/recipes/${recipeID}`);
+        //})
+    }
 
     render(){
         return (
@@ -74,5 +61,11 @@ const mapStateToProps = state => {
         recipes: state.recipes
     }
 }
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//       dispatchAddRecipe: (formData) => dispatch(addRecipe(formData))
+//     };
+// };
 
 export default connect(mapStateToProps, {addRecipe})(RecipeInput);
