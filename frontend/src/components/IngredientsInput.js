@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addIngredient } from '../actions/addIngredient';
 
 // I want this page to have the recipe name as a header at the top,
 // while having a text box and button right below it for adding ingredients,
@@ -53,7 +54,11 @@ class IngredientsInput extends React.Component {
                     <input type="button" value="Add Ingredient" onClick={this.addIngredient} />
                     <input type="submit" value="Confirm Recipe" />
                 </form>
-                {/*this.props.ingredients.map(ingredient)}
+                {/*
+                this.props.ingredients.map(ingredient => {
+                    <li>{ingredient.name}</li>
+                })
+                */}
             </div>
         )
     }
@@ -66,8 +71,6 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    
-}
+const mapDispatchToProps = dispatch => 
 
-export default connect(mapStateToProps, mapDispatchToProps )(IngredientsInput)
+export default connect(mapStateToProps, { addIngredient } )(IngredientsInput)
