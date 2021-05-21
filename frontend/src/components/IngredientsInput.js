@@ -40,9 +40,11 @@ class IngredientsInput extends React.Component {
     }
 
     render() {
+        const recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+
         return (
             <div>
-            <h1>{this.props.recipes[this.props.match.params.id]["name"]}</h1>
+            <h1>{recipe.name}</h1>
                <form onSubmit={this.handleSubmit}>
                     <input 
                         type="text" 
