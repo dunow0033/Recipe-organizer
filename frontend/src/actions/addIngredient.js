@@ -8,8 +8,8 @@ export const addIngredient = (ingredient, recipeId) => {
             body: JSON.stringify(ingredient)
         })
         .then(res => res.json())
-        .then(ingredient => dispatch({
-            type: 'ADD_INGREDIENT', payload: ingredient
+        .then(recipe => dispatch({
+            type: 'ADD_INGREDIENT', payload: recipe
         }))
     }
 }

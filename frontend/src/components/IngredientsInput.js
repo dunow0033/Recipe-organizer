@@ -28,13 +28,14 @@ class IngredientsInput extends React.Component {
         this.setState({
             name: ''
         })
+        //this.props.history('/')
     }
 
     addIngredient = (event) => {
         let recipeId = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
 
         event.preventDefault();
-        this.props.addIngredient(this.state, recipeId);
+        this.props.addIngredient(this.state, recipeId.id);
         this.setState({
             name: ''
         })
@@ -73,6 +74,11 @@ const mapStateToProps = state => {
     }
 }
 
-//const mapDispatchToProps = dispatch => 
+// const mapDispatchToProps = () => {
+//     return {
+//          addThing: addThing,
+//          doAnotherThing: doAnotherThing
+//     }
+// }
 
 export default connect(mapStateToProps, { addIngredient } )(IngredientsInput)
