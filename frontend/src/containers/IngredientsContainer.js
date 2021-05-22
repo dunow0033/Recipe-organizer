@@ -1,5 +1,6 @@
 import React from 'react';
 import IngredientsInput from '../components/IngredientsInput';
+import Ingredients from '../containers/Ingredients';
 
 class IngredientsContainer extends React.Component {
 
@@ -7,6 +8,7 @@ class IngredientsContainer extends React.Component {
         return (
             <div>
                 <IngredientsInput />
+                <Ingredients />
             </div>
         )
     }

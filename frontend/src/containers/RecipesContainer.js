@@ -4,11 +4,10 @@ import { Route, Link, Switch } from 'react-router-dom'
 import { fetchRecipes } from '../actions/fetchRecipes';
 import Recipes from '../components/Recipes';
 import RecipeInput from '../components/RecipeInput';
-import IngredientsInput from '../components/IngredientsInput';
+import IngredientsContainer from '../containers/IngredientsContainer';
 
 
 class RecipesContainer extends React.Component {
-
     componentDidMount(){
         this.props.fetchRecipes();
     }
@@ -18,9 +17,9 @@ class RecipesContainer extends React.Component {
             <div>
                 <Switch>
                     <Route exact path='/recipes/new' component={RecipeInput} />
-                    <Route exact path='/recipes/:id' component={IngredientsInput} />
-                    {/*<Route exact path='/recipes/:id' render={() => <IngredientsInput recipes={this.props.recipes} />}/>*/}
+                    <Route exact path='/recipes/:id' component={IngredientsContainer} />
                     <Link to="/recipes/new">Make a New Recipe</Link>
+                    {/*<Route exact path='/recipes/:id' render={() => <IngredientsInput recipes={this.props.recipes} />}/>*/}
                     {/*<Route path='/recipes/:id' render={(routerProps) => <Recipe {...routerProps} recipes={this.props.recipes}/>}/>*/}
                 </Switch>
                 <Switch>
