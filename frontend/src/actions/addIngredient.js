@@ -1,6 +1,6 @@
 export const addIngredient = (ingredient, recipeId) => { 
     return (dispatch) => {
-        fetch(`http://localhost:3001/${recipeId}/ingredients`, {
+        fetch(`http://localhost:3001/recipes/${recipeId}/ingredients`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
