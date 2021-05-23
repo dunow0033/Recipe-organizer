@@ -10,7 +10,7 @@ class IngredientsController < ApplicationController
     def create
         ingredient = @recipe.ingredients.new(ingredient_params)
         if ingredient.save
-            render json: ingredient
+            render json: @recipe
         else
             render json: {error: 'Error saving ingredient'}
         end

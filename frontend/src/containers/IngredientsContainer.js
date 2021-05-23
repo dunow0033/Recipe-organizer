@@ -1,5 +1,5 @@
 import React from 'react';
-import Ingredients from '../containers/Ingredients';
+import Ingredients from '../components/Ingredients';
 
 class IngredientsContainer extends React.Component {
 

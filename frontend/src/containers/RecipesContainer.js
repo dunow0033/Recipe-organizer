@@ -4,7 +4,7 @@ import { Route, Link, Switch } from 'react-router-dom'
 import { fetchRecipes } from '../actions/fetchRecipes';
 import Recipes from '../components/Recipes';
 import RecipeInput from '../components/RecipeInput';
-import IngredientsInput from '../containers/IngredientsInput';
+import IngredientsInput from '../components/IngredientsInput';
 
 
 class RecipesContainer extends React.Component {
