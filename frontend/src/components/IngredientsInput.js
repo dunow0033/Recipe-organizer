@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addIngredient } from '../actions/addIngredient';
+import { deleteIngredient } from '../actions/deleteIngredient';
 // import { Ingredients } from './Ingredients'
 // import { IngredientsContainer } from '../containers/IngredientsContainer'
 
@@ -34,13 +35,19 @@ class IngredientsInput extends React.Component {
     }
 
     addIngredient = (event) => {
-        let recipeId = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+        let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
 
         event.preventDefault();
-        this.props.addIngredient(this.state, recipeId.id);
+        this.props.addIngredient(this.state, recipe.id);
         this.setState({
             name: ''
         })
+    }
+
+    deleteIngredient = (ingredient) => {
+        let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+        this.props.deleteIngredient(ingredient.id, recipe.id)
+        console.log(ingredient.recipe_id)
     }
 
     render() {
@@ -63,6 +70,7 @@ class IngredientsInput extends React.Component {
                 {recipe.ingredients && recipe.ingredients.map(ingredient => 
                     <li key={ingredient.id}>
                         {ingredient.name}
+                        <button onClick={() => this.deleteIngredient(ingredient)}>Delete</button>
                     </li> 
                 )} 
 
@@ -86,4 +94,4 @@ const mapStateToProps = state => {
 //     }
 // }
 
-export default connect(mapStateToProps, { addIngredient } )(IngredientsInput)
+export default connect(mapStateToProps, { addIngredient, deleteIngredient } )(IngredientsInput)

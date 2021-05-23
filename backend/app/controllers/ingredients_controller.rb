@@ -18,7 +18,9 @@ class IngredientsController < ApplicationController
 
     def destroy
         ingredient = Ingredient.find(params[:id])
+        recipe = Recipe.find(ingredient.recipe_id)
         ingredient.destroy
+        render json: recipe
     end
 
     private
