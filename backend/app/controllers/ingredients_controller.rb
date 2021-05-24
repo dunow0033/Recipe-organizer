@@ -8,6 +8,7 @@ class IngredientsController < ApplicationController
     end
     
     def create
+        binding.pry
         ingredient = @recipe.ingredients.new(ingredient_params)
         if ingredient.save
             render json: @recipe

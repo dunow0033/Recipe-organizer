@@ -16,20 +16,21 @@ class IngredientsInput extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            name: ''
+            ingredient: '',
+            instruction: ''
         }
     }
 
-    handleChange = (event) => {
+    changeIngredient = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
-    handleSubmit = (event) => {
+    submitIngredient = (event) => {
         event.preventDefault();
         this.setState({
-            name: ''
+            ingredient: ''
         })
         //this.props.history('/')
     }
@@ -40,15 +41,30 @@ class IngredientsInput extends React.Component {
         event.preventDefault();
         this.props.addIngredient(this.state, recipe.id);
         this.setState({
-            name: ''
+            ingredient: '',
+            instruction: ''
         })
     }
+
+    // addInstruction = (event) => {
+    //     let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+
+    //     event.preventDefault();
+    //     this.props.addInstruction(this.state, recipe.id);
+    //     this.setState({
+    //         instruction: ''
+    //     })
+    // }
 
     deleteIngredient = (ingredient) => {
         let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
         this.props.deleteIngredient(ingredient.id, recipe.id)
-        console.log(ingredient.recipe_id)
     }
+
+    // deleteInstruction = (ingredient) => {
+    //     let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+    //     this.props.deleteIngredient(ingredient.id, recipe.id)
+    // }
 
     render() {
         let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
@@ -56,13 +72,13 @@ class IngredientsInput extends React.Component {
         return (
             <div>
             <h1>{recipe.name}</h1>
-               <form onSubmit={this.handleSubmit}>
+               <form onSubmit={this.submitIngredient}>
                     <input 
                         type="text" 
-                        name="name" 
-                        value={this.state.name} 
-                        onChange={this.handleChange} 
-                        placeholder="ingredient name" />
+                        name="ingredient" 
+                        value={this.state.ingredient} 
+                        onChange={this.changeIngredient} 
+                        placeholder="ingredient" />
                     <input type="button" value="Add Ingredient" onClick={this.addIngredient} />
                     <input type="submit" value="Confirm Recipe" />
                 </form>
