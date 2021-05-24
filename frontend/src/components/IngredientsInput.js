@@ -16,8 +16,8 @@ class IngredientsInput extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            ingredient: '',
-            instruction: ''
+            name: '',
+            content: ''
         }
     }
 
@@ -27,10 +27,17 @@ class IngredientsInput extends React.Component {
         })
     }
 
-    submitIngredient = (event) => {
+    changeContent = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    submitForm = (event) => {
         event.preventDefault();
         this.setState({
-            ingredient: ''
+            name: '',
+            content: ''
         })
         //this.props.history('/')
     }
@@ -41,9 +48,13 @@ class IngredientsInput extends React.Component {
         event.preventDefault();
         this.props.addIngredient(this.state, recipe.id);
         this.setState({
-            ingredient: '',
-            instruction: ''
+            name: ''
         })
+    }
+
+    deleteIngredient = (ingredient) => {
+        let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+        this.props.deleteIngredient(ingredient.id, recipe.id)
     }
 
     // addInstruction = (event) => {
@@ -56,11 +67,6 @@ class IngredientsInput extends React.Component {
     //     })
     // }
 
-    deleteIngredient = (ingredient) => {
-        let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
-        this.props.deleteIngredient(ingredient.id, recipe.id)
-    }
-
     // deleteInstruction = (ingredient) => {
     //     let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
     //     this.props.deleteIngredient(ingredient.id, recipe.id)
@@ -72,14 +78,22 @@ class IngredientsInput extends React.Component {
         return (
             <div>
             <h1>{recipe.name}</h1>
-               <form onSubmit={this.submitIngredient}>
+               <form onSubmit={this.submitForm}>
                     <input 
                         type="text" 
-                        name="ingredient" 
-                        value={this.state.ingredient} 
+                        name="name" 
+                        value={this.state.name} 
                         onChange={this.changeIngredient} 
                         placeholder="ingredient" />
                     <input type="button" value="Add Ingredient" onClick={this.addIngredient} />
+                    <textarea 
+                        name="content" 
+                        value={this.state.content}
+                        rows="5"
+                        cols="40" 
+                        onChange={this.changeContent} 
+                        placeholder="instructions"></textarea>
+                    <input type="button" value="Add Instruction" onClick={this.addInstruction} />
                     <input type="submit" value="Confirm Recipe" />
                 </form>
 
