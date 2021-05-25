@@ -80,6 +80,7 @@ class IngredientsInput extends React.Component {
             <div>
             <h1>{recipe.name}</h1>
                <form onSubmit={this.submitForm}>
+                    <table>
                     <input 
                         type="text" 
                         name="name" 
@@ -96,21 +97,24 @@ class IngredientsInput extends React.Component {
                         placeholder="instructions"></textarea>
                     <input type="button" value="Add Instruction" onClick={this.addInstruction} />
                     <input type="submit" value="Confirm Recipe" />
+                    </table>
                 </form>
 
-                {recipe.ingredients && recipe.ingredients.map(ingredient => 
-                    <li key={ingredient.id}>
-                        {ingredient.name}
-                        <button onClick={() => this.deleteIngredient(ingredient)}>Delete</button>
-                    </li> 
-                )}
+                <table>
+                    {recipe.ingredients && recipe.ingredients.map(ingredient => 
+                        <li key={ingredient.id}>
+                            {ingredient.name}
+                            <button onClick={() => this.deleteIngredient(ingredient)}>Delete</button>
+                        </li> 
+                    )}
 
-                {recipe.instructions && recipe.instructions.map(instruction => 
-                    <li key={instruction.id}>
-                        {instruction.content}
-                        {/*<button onClick={() => this.deleteInstruction(instruction)}>Delete</button>*/}
-                    </li> 
-                )} 
+                    {recipe.instructions && recipe.instructions.map(instruction => 
+                        <li key={instruction.id}>
+                            {instruction.content}
+                            {/*<button onClick={() => this.deleteInstruction(instruction)}>Delete</button>*/}
+                        </li> 
+                    )}
+                </table> 
 
                 {/*<Ingredients recipe={recipe} />*/}
             </div>
