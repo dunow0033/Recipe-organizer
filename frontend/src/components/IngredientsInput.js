@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addIngredient } from '../actions/addIngredient';
 import { deleteIngredient } from '../actions/deleteIngredient';
+import { addInstruction } from '../actions/addInstruction';
 // import { Ingredients } from './Ingredients'
 // import { IngredientsContainer } from '../containers/IngredientsContainer'
 
@@ -57,15 +58,15 @@ class IngredientsInput extends React.Component {
         this.props.deleteIngredient(ingredient.id, recipe.id)
     }
 
-    // addInstruction = (event) => {
-    //     let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+    addInstruction = (event) => {
+        let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
 
-    //     event.preventDefault();
-    //     this.props.addInstruction(this.state, recipe.id);
-    //     this.setState({
-    //         instruction: ''
-    //     })
-    // }
+        event.preventDefault();
+        this.props.addInstruction(this.state, recipe.id);
+        this.setState({
+            content: ''
+        })
+    }
 
     // deleteInstruction = (ingredient) => {
     //     let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
@@ -102,6 +103,13 @@ class IngredientsInput extends React.Component {
                         {ingredient.name}
                         <button onClick={() => this.deleteIngredient(ingredient)}>Delete</button>
                     </li> 
+                )}
+
+                {recipe.instructions && recipe.instructions.map(instruction => 
+                    <li key={instruction.id}>
+                        {instruction.content}
+                        {/*<button onClick={() => this.deleteInstruction(instruction)}>Delete</button>*/}
+                    </li> 
                 )} 
 
                 {/*<Ingredients recipe={recipe} />*/}
@@ -124,4 +132,4 @@ const mapStateToProps = state => {
 //     }
 // }
 
-export default connect(mapStateToProps, { addIngredient, deleteIngredient } )(IngredientsInput)
+export default connect(mapStateToProps, { addIngredient, deleteIngredient, addInstruction } )(IngredientsInput)
