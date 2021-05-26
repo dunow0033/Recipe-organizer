@@ -34,15 +34,6 @@ class IngredientsInput extends React.Component {
         })
     }
 
-    submitForm = (event) => {
-        event.preventDefault();
-        this.setState({
-            name: '',
-            content: ''
-        })
-        //this.props.history('/')
-    }
-
     addIngredient = (event) => {
         let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
 
@@ -72,6 +63,19 @@ class IngredientsInput extends React.Component {
     //     let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
     //     this.props.deleteIngredient(ingredient.id, recipe.id)
     // }
+
+    submitForm = (event) => {
+        let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+
+        //console.log(this.props.match.params.id)
+
+        event.preventDefault();
+        this.setState({
+            name: '',
+            content: ''
+        })
+        this.props.history.push(`/recipes/${this.props.match.params.id}/confirm`)
+    }
 
     render() {
         let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
