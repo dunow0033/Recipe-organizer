@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { addIngredient } from '../actions/addIngredient';
 import { deleteIngredient } from '../actions/deleteIngredient';
 import { addInstruction } from '../actions/addInstruction';
+import { deleteInstruction } from '../actions/deleteInstruction';
+import styles from './table.css'
 // import { Ingredients } from './Ingredients'
 // import { IngredientsContainer } from '../containers/IngredientsContainer'
 
@@ -59,15 +61,13 @@ class IngredientsInput extends React.Component {
         })
     }
 
-    // deleteInstruction = (ingredient) => {
-    //     let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
-    //     this.props.deleteIngredient(ingredient.id, recipe.id)
-    // }
+    deleteInstruction = (instruction) => {
+        let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
+        this.props.deleteInstruction(instruction.id, recipe.id)
+    }
 
     submitForm = (event) => {
         let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
-
-        //console.log(this.props.match.params.id)
 
         event.preventDefault();
         this.setState({
@@ -104,21 +104,32 @@ class IngredientsInput extends React.Component {
                     </table>
                 </form>
 
-                <table>
+                <table class="row">
+                    <table class="column">
+                        <tr>
+                        <td>
                     {recipe.ingredients && recipe.ingredients.map(ingredient => 
                         <li key={ingredient.id}>
                             {ingredient.name}
                             <button onClick={() => this.deleteIngredient(ingredient)}>Delete</button>
                         </li> 
                     )}
-
+                    </td>
+                    </tr>
+                </table>
+                <table class="column">
+                    <tr>
+                    <td>
                     {recipe.instructions && recipe.instructions.map(instruction => 
                         <li key={instruction.id}>
                             {instruction.content}
-                            {/*<button onClick={() => this.deleteInstruction(instruction)}>Delete</button>*/}
+                            <button onClick={() => this.deleteInstruction(instruction)}>Delete</button>
                         </li> 
                     )}
-                </table> 
+                        </td>
+                        </tr>
+                    </table>
+                </table>
 
                 {/*<Ingredients recipe={recipe} />*/}
             </div>
@@ -140,4 +151,4 @@ const mapStateToProps = state => {
 //     }
 // }
 
-export default connect(mapStateToProps, { addIngredient, deleteIngredient, addInstruction } )(IngredientsInput)
+export default connect(mapStateToProps, { addIngredient, deleteIngredient, addInstruction, deleteInstruction } )(IngredientsInput)
