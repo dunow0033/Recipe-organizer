@@ -150,7 +150,7 @@ class IngredientsInput extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        ingredients: state.ingredients,
+        //ingredients: state.ingredients,
         recipes: state.recipes
     }
 }
