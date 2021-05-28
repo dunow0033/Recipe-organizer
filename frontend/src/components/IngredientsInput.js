@@ -4,11 +4,9 @@ import { addIngredient } from '../actions/addIngredient';
 import { deleteIngredient } from '../actions/deleteIngredient';
 import { addInstruction } from '../actions/addInstruction';
 import { deleteInstruction } from '../actions/deleteInstruction';
-import { deleteRecipe } from '../actions/deleteRecipe';
+//import { deleteRecipe } from '../actions/deleteRecipe';
 
 import './table.css'
-// import { Ingredients } from './Ingredients'
-// import { IngredientsContainer } from '../containers/IngredientsContainer'
 
 // I want this page to have the recipe name as a header at the top,
 // while having a text box and button right below it for adding ingredients,
@@ -68,12 +66,12 @@ class IngredientsInput extends React.Component {
         this.props.deleteInstruction(instruction.id, recipe.id)
     }
 
-    deleteRecipe = (recipeId) => {
-        this.props.deleteRecipe(recipeId).then(() => {
-            this.props.history.push("/");
-            //<Redirect to="/" />
-        });
-    }
+    // deleteRecipe = (recipeId) => {
+    //     this.props.deleteRecipe(recipeId).then(() => {
+    //         this.props.history.push("/");
+    //         //<Redirect to="/" />
+    //     });
+    // }
 
     submitForm = (event) => {
 
@@ -164,4 +162,4 @@ const mapStateToProps = state => {
 //     }
 // }
 
-export default connect(mapStateToProps, { addIngredient, deleteIngredient, addInstruction, deleteInstruction, deleteRecipe } )(IngredientsInput)
+export default connect(mapStateToProps, { addIngredient, deleteIngredient, addInstruction, deleteInstruction } )(IngredientsInput)

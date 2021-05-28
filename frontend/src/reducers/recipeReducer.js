@@ -33,15 +33,15 @@ export default function recipeReducer(state = {recipes: []}, action) {
                 }
             })
             return {...state, recipes: recipes3}
-        case 'DELETE_INSTRUCTION':
-                let recipes4 = state.recipes.map(recipe => {
-                    if(recipe.id === action.payload.id){
-                        return action.payload
-                    } else {
-                        return recipe
-                    }
-                })
-                return {...state, recipes: recipes4}
+        // case 'DELETE_INSTRUCTION':
+        //         let recipes4 = state.recipes.map(recipe => {
+        //             if(recipe.id === action.payload.id){
+        //                 return action.payload
+        //             } else {
+        //                 return recipe
+        //             }
+        //         })
+        //         return {...state, recipes: recipes4}
         default:
             return state
     }

@@ -1,17 +1,19 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { deleteRecipe } from '../actions/deleteRecipe';
+import { Link } from 'react-router-dom';
+import './table.css';
 
 const Recipes = (props) => {
 
     return (
         <div>
-            {props.recipes && props.recipes.map(recipe => 
-                <li key={recipe.id}>
-                    <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
-                </li> 
-            )}
+            <h3>Current Recipe List: </h3>
+            <ul>
+                {props.recipes && props.recipes.map(recipe => 
+                    <li key={recipe.id}>
+                        <Link to={`/recipes/${recipe.id}`}>{recipe.name}</Link>
+                    </li> 
+                )}
+            </ul>
         </div>
     )
 }
