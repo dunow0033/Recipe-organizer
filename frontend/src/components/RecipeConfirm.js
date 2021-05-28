@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 //I want this page to have the recipe name as a header at the top,
@@ -13,6 +13,14 @@ const RecipeConfirm = (props) => {
     return (
         <div>
             Recipe for {recipe.name}
+            <br>
+            </br>
+            <br>
+            </br>
+            <Link to={`/recipes/${props.match.params.id}`}>Edit {recipe.name}</Link>
+            <br>
+            </br>
+            <Link to="/">Recipes Home</Link>
         </div>
     )
 }
@@ -25,4 +33,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect( mapStateToProps )(RecipeConfirm);
+export default connect ( mapStateToProps)(RecipeConfirm)

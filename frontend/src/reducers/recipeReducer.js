@@ -4,6 +4,8 @@ export default function recipeReducer(state = {recipes: []}, action) {
             return {recipes: action.payload};
         case 'ADD_RECIPE':
             return {...state, recipes: [...state.recipes, action.payload]}
+        case 'DELETE_RECIPE':
+            return state.recipes.filter(recipe => recipe.id === action.payload.id)
         case 'ADD_INGREDIENT':
             let recipes = state.recipes.map(recipe => {
                 if(recipe.id === action.payload.id){

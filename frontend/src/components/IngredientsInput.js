@@ -4,7 +4,9 @@ import { addIngredient } from '../actions/addIngredient';
 import { deleteIngredient } from '../actions/deleteIngredient';
 import { addInstruction } from '../actions/addInstruction';
 import { deleteInstruction } from '../actions/deleteInstruction';
-import styles from './table.css'
+import { deleteRecipe } from '../actions/deleteRecipe';
+
+import './table.css'
 // import { Ingredients } from './Ingredients'
 // import { IngredientsContainer } from '../containers/IngredientsContainer'
 
@@ -66,8 +68,14 @@ class IngredientsInput extends React.Component {
         this.props.deleteInstruction(instruction.id, recipe.id)
     }
 
+    deleteRecipe = (recipeId) => {
+        this.props.deleteRecipe(recipeId).then(() => {
+            this.props.history.push("/");
+            //<Redirect to="/" />
+        });
+    }
+
     submitForm = (event) => {
-        let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
 
         event.preventDefault();
         this.setState({
@@ -82,56 +90,61 @@ class IngredientsInput extends React.Component {
 
         return (
             <div>
-            <h1>{recipe.name}</h1>
-               <form onSubmit={this.submitForm}>
-                    <table>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        value={this.state.name} 
-                        onChange={this.changeIngredient} 
-                        placeholder="ingredient" />
-                    <input type="button" value="Add Ingredient" onClick={this.addIngredient} />
-                    <textarea 
-                        name="content" 
-                        value={this.state.content}
-                        rows="5"
-                        cols="40" 
-                        onChange={this.changeContent} 
-                        placeholder="instructions"></textarea>
-                    <input type="button" value="Add Instruction" onClick={this.addInstruction} />
-                    <input type="submit" value="Confirm Recipe" />
-                    </table>
-                </form>
+                <h1>{recipe.name}</h1>
+                    <form onSubmit={this.submitForm}>
+                        <table>
+                            <input 
+                                type="text" 
+                                name="name" 
+                                value={this.state.name} 
+                                onChange={this.changeIngredient} 
+                                placeholder="ingredient" />
+                                <input type="button" value="Add Ingredient" onClick={this.addIngredient} />
+                            <textarea 
+                                name="content" 
+                                value={this.state.content}
+                                rows="5"
+                                cols="40" 
+                                onChange={this.changeContent} 
+                                placeholder="instructions">
+                            </textarea>
+                            <input type="button" value="Add Instruction" onClick={this.addInstruction} />
+                            <input type="submit" value="Confirm Recipe" />
+                        </table>
+                    </form>
 
-                <table class="row">
-                    <table class="column">
+                    <table className="row">
+                        <table className="column">
+                            <tr>
+                                <td>
+                                    <ul>
+                                    {recipe.ingredients && recipe.ingredients.map(ingredient => 
+                                        <li key={ingredient.id}>
+                                                {ingredient.name}
+                                                <button onClick={() => this.deleteIngredient(ingredient)}>Delete</button>
+                                        </li> 
+                                    )}
+                                    </ul>
+                                </td>
+                            </tr>
+                    </table>
+                    <table className="column">
                         <tr>
-                        <td>
-                    {recipe.ingredients && recipe.ingredients.map(ingredient => 
-                        <li key={ingredient.id}>
-                            {ingredient.name}
-                            <button onClick={() => this.deleteIngredient(ingredient)}>Delete</button>
-                        </li> 
-                    )}
-                    </td>
-                    </tr>
-                </table>
-                <table class="column">
-                    <tr>
-                    <td>
-                    {recipe.instructions && recipe.instructions.map(instruction => 
-                        <li key={instruction.id}>
-                            {instruction.content}
-                            <button onClick={() => this.deleteInstruction(instruction)}>Delete</button>
-                        </li> 
-                    )}
-                        </td>
+                            <td>
+                                <ul>
+                                {recipe.instructions && recipe.instructions.map(instruction => 
+                                    <li key={instruction.id}>
+                                            {instruction.content}
+                                            <button onClick={() => this.deleteInstruction(instruction)}>Delete</button>
+                                    </li> 
+                                )}
+                                </ul>
+                            </td>
                         </tr>
                     </table>
                 </table>
 
-                {/*<Ingredients recipe={recipe} />*/}
+                <button onClick={(e) => {e.preventDefault(); this.deleteRecipe(recipe.id)}}>Delete {recipe.name}</button>
             </div>
         )
     }
@@ -151,4 +164,4 @@ const mapStateToProps = state => {
 //     }
 // }
 
-export default connect(mapStateToProps, { addIngredient, deleteIngredient, addInstruction, deleteInstruction } )(IngredientsInput)
+export default connect(mapStateToProps, { addIngredient, deleteIngredient, addInstruction, deleteInstruction, deleteRecipe } )(IngredientsInput)
