@@ -144,7 +144,7 @@ class IngredientsInput extends React.Component {
                     </table>
                 </table>
 
-                <button onClick={(e) => {e.preventDefault(); this.deleteRecipe(recipe.id)}}>Delete {recipe.name}</button>
+                {/*<button onClick={(e) => {e.preventDefault(); this.deleteRecipe(recipe.id)}}>Delete {recipe.name}</button>*/}
             </div>
         )
     }
