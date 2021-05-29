@@ -5,6 +5,7 @@ import { deleteIngredient } from '../actions/deleteIngredient';
 import { addInstruction } from '../actions/addInstruction';
 import { deleteInstruction } from '../actions/deleteInstruction';
 import RecipeName from './RecipeName';
+import './IngredientsInput.css'
 //import { deleteRecipe } from '../actions/deleteRecipe';
 
 import './table.css'
@@ -91,7 +92,8 @@ class IngredientsInput extends React.Component {
             <div>
                 <RecipeName recipe={recipe} />
                     <form onSubmit={this.submitForm}>
-                        <table>
+                        <div className="flex-container-top">
+                            <div className="column">
                             <input 
                                 type="text" 
                                 name="name" 
@@ -99,6 +101,8 @@ class IngredientsInput extends React.Component {
                                 onChange={this.changeIngredient} 
                                 placeholder="ingredient" />
                                 <input type="button" value="Add Ingredient" onClick={this.addIngredient} />
+                            </div>
+                            <div className="column">
                             <textarea 
                                 name="content" 
                                 value={this.state.content}
@@ -109,13 +113,15 @@ class IngredientsInput extends React.Component {
                             </textarea>
                             <input type="button" value="Add Instruction" onClick={this.addInstruction} />
                             <input type="submit" value="Confirm Recipe" />
-                        </table>
+                            </div>
+                        </div>
                     </form>
 
-                    <table className="row">
-                        <table className="column">
+                    <div className="flex-container">
+                        <div className="column">
                             <tr>
                                 <td>
+                                    <h3>List of ingredients: </h3>
                                     <ul>
                                     {recipe.ingredients && recipe.ingredients.map(ingredient => 
                                         <li key={ingredient.id}>
@@ -126,10 +132,11 @@ class IngredientsInput extends React.Component {
                                     </ul>
                                 </td>
                             </tr>
-                    </table>
-                    <table className="column">
+                    </div>
+                    <div className="column">
                         <tr>
                             <td>
+                                <h3>List of instructions: </h3>
                                 <ul>
                                 {recipe.instructions && recipe.instructions.map(instruction => 
                                     <li key={instruction.id}>
@@ -140,8 +147,8 @@ class IngredientsInput extends React.Component {
                                 </ul>
                             </td>
                         </tr>
-                    </table>
-                </table>
+                    </div>
+                </div>
 
                 {/*<button onClick={(e) => {e.preventDefault(); this.deleteRecipe(recipe.id)}}>Delete {recipe.name}</button>*/}
             </div>
