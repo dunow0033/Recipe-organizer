@@ -7,13 +7,11 @@ const Recipes = (props) => {
     return (
         <div>
             <h3>Current Recipe List: </h3>
-            <ul>
                 {props.recipes && props.recipes.map(recipe => 
-                    <li key={recipe.id}>
+                    <div class="flexbox-container" key={recipe.id}>
                         <Recipe recipe={recipe} />
-                    </li> 
+                    </div> 
                 )}
-            </ul>
         </div>
     )
 }

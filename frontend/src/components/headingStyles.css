@@ -1,0 +1,21 @@
+h2#heading {
+    margin-left: 175px;
+    font-style: italic;
+    font-weight: 200;
+    color: red
+}
+
+h2#heading span {
+    font-weight: 900;
+}
+
+h2#confirm-heading {
+    margin-left: 175px;
+    font-style: italic;
+    font-weight: 200;
+    color: green;
+}
+
+h2#confirm-heading span {
+    font-weight: 900;
+}

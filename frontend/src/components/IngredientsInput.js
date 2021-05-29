@@ -4,6 +4,7 @@ import { addIngredient } from '../actions/addIngredient';
 import { deleteIngredient } from '../actions/deleteIngredient';
 import { addInstruction } from '../actions/addInstruction';
 import { deleteInstruction } from '../actions/deleteInstruction';
+import RecipeName from './RecipeName';
 //import { deleteRecipe } from '../actions/deleteRecipe';
 
 import './table.css'
@@ -88,7 +89,7 @@ class IngredientsInput extends React.Component {
 
         return (
             <div>
-                <h1>{recipe.name}</h1>
+                <RecipeName recipe={recipe} />
                     <form onSubmit={this.submitForm}>
                         <table>
                             <input 

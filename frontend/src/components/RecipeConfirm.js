@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import RecipeConfirmHeading from './RecipeConfirmHeading';
 import './table.css';
 
 //I want this page to have the recipe name as a header at the top,
@@ -13,11 +14,11 @@ const RecipeConfirm = (props) => {
 
     return (
         <div>
-            <h2>Recipe for {recipe.name}</h2>
+            <RecipeConfirmHeading recipe={recipe} />
             <br>
             </br>
             <table className="row">
-                        <table className="column">
+                <table className="column">
                             <tr>
                                 <td>
                                     <h3>List of ingredients: </h3>
