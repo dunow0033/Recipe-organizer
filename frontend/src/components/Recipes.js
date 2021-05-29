@@ -6,7 +6,7 @@ const Recipes = (props) => {
 
     return (
         <div>
-            <h3>Current Recipe List: </h3>
+            <h3 id="list">Current Recipe List: </h3>
                 {props.recipes && props.recipes.map(recipe => 
                     <div class="flexbox-container" key={recipe.id}>
                         <Recipe recipe={recipe} />

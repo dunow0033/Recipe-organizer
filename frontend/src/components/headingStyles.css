@@ -2,7 +2,7 @@ h2#heading {
     margin-left: 175px;
     font-style: italic;
     font-weight: 200;
-    color: red
+    color: #1BE9D0;
 }
 
 h2#heading span {
@@ -13,9 +13,13 @@ h2#confirm-heading {
     margin-left: 175px;
     font-style: italic;
     font-weight: 200;
-    color: green;
+    color: #9EE91B;
 }
 
 h2#confirm-heading span {
     font-weight: 900;
+}
+
+div#links {
+    margin-left: 175px;
 }

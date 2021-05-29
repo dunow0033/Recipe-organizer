@@ -1,0 +1,16 @@
+body {
+    background-image: url("https://i.ibb.co/8rBSQwm/Italian-food-background-with-vine-tomatoes-basil-spaghetti-spinach-onion-parmesan-olive-oil-garlic-p.jpg");
+    background-size: cover;
+}
+
+h3#list {
+    color:#EA9323;
+}
+
+a.new, a.new:visited {
+    color: white;
+}
+
+a:hover, a.new:hover {
+    color: red;
+}
