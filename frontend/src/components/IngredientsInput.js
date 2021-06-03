@@ -6,7 +6,6 @@ import { addInstruction } from '../actions/addInstruction';
 import { deleteInstruction } from '../actions/deleteInstruction';
 import RecipeName from './RecipeName';
 import './IngredientsInput.css'
-//import { deleteRecipe } from '../actions/deleteRecipe';
 
 import './table.css'
 
@@ -68,12 +67,7 @@ class IngredientsInput extends React.Component {
         this.props.deleteInstruction(instruction.id, recipe.id)
     }
 
-    // deleteRecipe = (recipeId) => {
-    //     this.props.deleteRecipe(recipeId).then(() => {
-    //         this.props.history.push("/");
-    //         //<Redirect to="/" />
-    //     });
-    // }
+    
 
     submitForm = (event) => {
 
@@ -149,8 +143,6 @@ class IngredientsInput extends React.Component {
                         </tr>
                     </div>
                 </div>
-
-                {/*<button onClick={(e) => {e.preventDefault(); this.deleteRecipe(recipe.id)}}>Delete {recipe.name}</button>*/}
             </div>
         )
     }
@@ -158,7 +150,6 @@ class IngredientsInput extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        //ingredients: state.ingredients,
         recipes: state.recipes
     }
 }
