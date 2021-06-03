@@ -25,12 +25,6 @@ class IngredientsInput extends React.Component {
         }
     }
 
-    changeIngredient = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-
     changeContent = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -92,7 +86,7 @@ class IngredientsInput extends React.Component {
                                 type="text" 
                                 name="name" 
                                 value={this.state.name} 
-                                onChange={this.changeIngredient} 
+                                onChange={this.changeContent} 
                                 placeholder="ingredient" />
                                 <input type="button" value="Add Ingredient" onClick={this.addIngredient} />
                             </div>
