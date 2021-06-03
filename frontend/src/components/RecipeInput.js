@@ -27,10 +27,6 @@ class RecipeInput extends React.Component {
             name: ''
         });
         //<Redirect to={`/recipes/${recipeIndex}`} />
-
-        // this.props.dispatchCreateEvent(formData).then(() => {
-        //     this.props.history.push(`/recipes/${recipeID}`);
-        //})
     }
 
     render(){
