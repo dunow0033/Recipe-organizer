@@ -5,6 +5,7 @@ import { deleteIngredient } from '../actions/deleteIngredient';
 import { addInstruction } from '../actions/addInstruction';
 import { deleteInstruction } from '../actions/deleteInstruction';
 import RecipeName from './RecipeName';
+import Ingredient from './Ingredient';
 import './IngredientsInput.css'
 
 import './table.css'
@@ -35,6 +36,7 @@ class IngredientsInput extends React.Component {
         let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
 
         event.preventDefault();
+       
         this.props.addIngredient(this.state, recipe.id);
         this.setState({
             name: ''
@@ -61,10 +63,7 @@ class IngredientsInput extends React.Component {
         this.props.deleteInstruction(instruction.id, recipe.id)
     }
 
-    
-
     submitForm = (event) => {
-
         event.preventDefault();
         this.setState({
             name: '',
@@ -76,6 +75,7 @@ class IngredientsInput extends React.Component {
     render() {
         let recipe = this.props.recipes.find((recipe) => recipe.id == this.props.match.params.id)
 
+        if(recipe){
         return (
             <div>
                 <RecipeName recipe={recipe} />
@@ -113,7 +113,7 @@ class IngredientsInput extends React.Component {
                                     <ul>
                                     {recipe.ingredients && recipe.ingredients.map(ingredient => 
                                         <li key={ingredient.id}>
-                                                {ingredient.name}
+                                                <Ingredient name={ingredient.name} />
                                                 <button onClick={() => this.deleteIngredient(ingredient)}>Delete</button>
                                         </li> 
                                     )}
@@ -139,6 +139,10 @@ class IngredientsInput extends React.Component {
                 </div>
             </div>
         )
+                                }
+                                else {
+                                    return null
+                                } 
     }
 }
 
@@ -148,10 +152,10 @@ const mapStateToProps = state => {
     }
 }
 
-// const mapDispatchToProps = () => {
+// const mapDispatchToProps = (dispatch) => {
 //     return {
-//          addThing: addThing,
-//          doAnotherThing: doAnotherThing
+//         deleteIngredient: (ing) => dispatch(deleteIngredient(ing)),
+//         addIngredient: (ing, rec) => dispatch(addIngredient(ing, rec))
 //     }
 // }
 

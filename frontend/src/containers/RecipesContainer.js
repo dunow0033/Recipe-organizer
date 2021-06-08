@@ -20,9 +20,6 @@ class RecipesContainer extends React.Component {
                     <Route exact path='/recipes/new' component={RecipeInput} />
                     <Route exact path='/recipes/:id' component={IngredientsInput} />
                     <Route exact path='/recipes/:id/confirm' component={RecipeConfirm} />
-                    <Link to="/recipes/new" class="new">Make a New Recipe</Link>
-                </Switch>
-                <Switch>
                     <Route exact path='/' render={() => <Recipes recipes={this.props.recipes}/>}/>
                 </Switch>
             </div>
